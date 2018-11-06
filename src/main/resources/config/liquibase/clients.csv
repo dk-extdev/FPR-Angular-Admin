@@ -1,0 +1,2 @@
+id;name;description;address;city;state;postal_code;country;phone_number;phone_ext;email;website;currency;is_active;industry_id
+1;Sample Client Company;Sample of client company. Use chargebackgurus.com info as address and info details.;8951 Collin McKinney Parkway;McKinney;TX;75070;USA;866-999-3758;null;info@chargebackgurus.com;chargebackgurus.com;USD;TRUE;4

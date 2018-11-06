@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-guru-client-heading">Create or edit a Guru Client</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!guruClient.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="guruClient.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_level">Level</label>
+                    <select class="form-control" name="level" [(ngModel)]="guruClient.level" id="field_level"  required>
+                        <option value="PRIMARY">PRIMARY</option>
+                        <option value="SECONDARY">SECONDARY</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.level?.dirty && editForm.controls.level?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.level?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_guru">Guru</label>
+                    <select class="form-control" id="field_guru" name="guru" [(ngModel)]="guruClient.guru"  required>
+                        <option *ngIf="!editForm.value.guru" [ngValue]="null" selected></option>
+                        <option [ngValue]="userOption.id === guruClient.guru?.id ? guruClient.guru : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.guru?.dirty && editForm.controls.guru?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.guru?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" [(ngModel)]="guruClient.client"  required>
+                        <option *ngIf="!editForm.value.client" [ngValue]="null" selected></option>
+                        <option [ngValue]="clientOption.id === guruClient.client?.id ? guruClient.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.client?.dirty && editForm.controls.client?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.client?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+image: jhipster/jhipster:v5.3.4
+
+pipelines:
+    default:
+    - step:
+          caches:
+          - gradle
+          script:
+          - ./gradlew compileJava -x check -PnodeInstall --no-daemon
+          - ./gradlew test -PnodeInstall --no-daemon
+          - ./gradlew npm_test -PnodeInstall --no-daemon
+          - ./gradlew bootWar -Pprod -x check -PnodeInstall --no-daemon

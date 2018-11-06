@@ -1,0 +1,98 @@
+import { element, by, ElementFinder } from 'protractor';
+
+export class PartnerClientComponentsPage {
+    createButton = element(by.id('jh-create-entity'));
+    deleteButtons = element.all(by.css('jhi-partner-client div table .btn-danger'));
+    title = element.all(by.css('jhi-partner-client div h2#page-heading span')).first();
+
+    async clickOnCreateButton() {
+        await this.createButton.click();
+    }
+
+    async clickOnLastDeleteButton() {
+        await this.deleteButtons.last().click();
+    }
+
+    async countDeleteButtons() {
+        return this.deleteButtons.count();
+    }
+
+    async getTitle() {
+        return this.title.getText();
+    }
+}
+
+export class PartnerClientUpdatePage {
+    pageTitle = element(by.id('jhi-partner-client-heading'));
+    saveButton = element(by.id('save-entity'));
+    cancelButton = element(by.id('cancel-save'));
+    partnerSelect = element(by.id('field_partner'));
+    merchantAccountSelect = element(by.id('field_merchantAccount'));
+
+    async getPageTitle() {
+        return this.pageTitle.getText();
+    }
+
+    async partnerSelectLastOption() {
+        await this.partnerSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async partnerSelectOption(option) {
+        await this.partnerSelect.sendKeys(option);
+    }
+
+    getPartnerSelect(): ElementFinder {
+        return this.partnerSelect;
+    }
+
+    async getPartnerSelectedOption() {
+        return this.partnerSelect.element(by.css('option:checked')).getText();
+    }
+
+    async merchantAccountSelectLastOption() {
+        await this.merchantAccountSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    async merchantAccountSelectOption(option) {
+        await this.merchantAccountSelect.sendKeys(option);
+    }
+
+    getMerchantAccountSelect(): ElementFinder {
+        return this.merchantAccountSelect;
+    }
+
+    async getMerchantAccountSelectedOption() {
+        return this.merchantAccountSelect.element(by.css('option:checked')).getText();
+    }
+
+    async save() {
+        await this.saveButton.click();
+    }
+
+    async cancel() {
+        await this.cancelButton.click();
+    }
+
+    getSaveButton(): ElementFinder {
+        return this.saveButton;
+    }
+}
+
+export class PartnerClientDeleteDialog {
+    private dialogTitle = element(by.id('jhi-delete-partnerClient-heading'));
+    private confirmButton = element(by.id('jhi-confirm-delete-partnerClient'));
+
+    async getDialogTitle() {
+        return this.dialogTitle.getText();
+    }
+
+    async clickOnConfirmButton() {
+        await this.confirmButton.click();
+    }
+}

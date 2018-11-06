@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="merchantAccount">
+            <h2><span>Merchant Account</span> {{merchantAccount.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Mid</span></dt>
+                <dd>
+                    <span>{{merchantAccount.mid}}</span>
+                </dd>
+                <dt><span>Mid Descriptor</span></dt>
+                <dd>
+                    <span>{{merchantAccount.midDescriptor}}</span>
+                </dd>
+                <dt><span>Active</span></dt>
+                <dd>
+                    <span>{{merchantAccount.active}}</span>
+                </dd>
+                <dt><span>Merchant</span></dt>
+                <dd>
+                    <div *ngIf="merchantAccount.merchant">
+                        <a [routerLink]="['/merchant', merchantAccount.merchant?.id, 'view']">{{merchantAccount.merchant?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Client Crm</span></dt>
+                <dd>
+                    <div *ngIf="merchantAccount.clientCrm">
+                        <a [routerLink]="['/client-crm', merchantAccount.clientCrm?.id, 'view']">{{merchantAccount.clientCrm?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/merchant-account', merchantAccount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

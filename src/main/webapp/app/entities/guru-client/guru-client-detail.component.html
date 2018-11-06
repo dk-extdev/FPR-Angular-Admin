@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="guruClient">
+            <h2><span>Guru Client</span> {{guruClient.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Level</span></dt>
+                <dd>
+                    <span>{{guruClient.level}}</span>
+                </dd>
+                <dt><span>Guru</span></dt>
+                <dd>
+                    {{guruClient.guru?.login}}
+                </dd>
+                <dt><span>Client</span></dt>
+                <dd>
+                    <div *ngIf="guruClient.client">
+                        <a [routerLink]="['/client', guruClient.client?.id, 'view']">{{guruClient.client?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/guru-client', guruClient.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

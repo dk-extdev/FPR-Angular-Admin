@@ -1,0 +1,5 @@
+id;login;password_hash;first_name;last_name;email;image_url;activated;lang_key;created_by;last_modified_by;user_type
+1;admin;$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC;Administrator;Administrator;admin@localhost;null;true;en;system;system;GURU
+2;opsmanager;$2a$10$uoiXj12K2b27BPpQsmsVhelzZpRW1f/TtvqWDJa62ZpvFons1mPMC;operation;manager;opsmanager@example.com;null;true;en;anonymousUser;anonymousUser;GURU
+3;client;$2a$10$uoiXj12K2b27BPpQsmsVhelzZpRW1f/TtvqWDJa62ZpvFons1mPMC;client;only;client@example.com;null;true;en;anonymousUser;anonymousUser;CLIENT
+4;partner;$2a$10$uoiXj12K2b27BPpQsmsVhelzZpRW1f/TtvqWDJa62ZpvFons1mPMC;client;only;partner@example.com;null;true;en;anonymousUser;anonymousUser;PARTNER

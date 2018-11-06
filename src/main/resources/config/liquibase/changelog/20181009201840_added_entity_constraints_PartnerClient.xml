@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity PartnerClient.
+    -->
+    <changeSet id="20181009201840-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="partner_id"
+                                 baseTableName="partner_client"
+                                 constraintName="fk_partner_client_partner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="partner"/>
+
+        <addForeignKeyConstraint baseColumnNames="merchant_account_id"
+                                 baseTableName="partner_client"
+                                 constraintName="fk_partner_client_merchant_account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="merchant_account"/>
+
+    </changeSet>
+</databaseChangeLog>

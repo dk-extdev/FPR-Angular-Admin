@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="partner">
+            <h2><span>Partner</span> {{partner.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{partner.name}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{partner.description}}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{partner.address}}</span>
+                </dd>
+                <dt><span>City</span></dt>
+                <dd>
+                    <span>{{partner.city}}</span>
+                </dd>
+                <dt><span>State</span></dt>
+                <dd>
+                    <span>{{partner.state}}</span>
+                </dd>
+                <dt><span>Postal Code</span></dt>
+                <dd>
+                    <span>{{partner.postalCode}}</span>
+                </dd>
+                <dt><span>Country</span></dt>
+                <dd>
+                    <span>{{partner.country}}</span>
+                </dd>
+                <dt><span>Phone Number</span></dt>
+                <dd>
+                    <span>{{partner.phoneNumber}}</span>
+                </dd>
+                <dt><span>Phone Ext</span></dt>
+                <dd>
+                    <span>{{partner.phoneExt}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{partner.email}}</span>
+                </dd>
+                <dt><span>Website</span></dt>
+                <dd>
+                    <span>{{partner.website}}</span>
+                </dd>
+                <dt><span>Currency</span></dt>
+                <dd>
+                    <span>{{partner.currency}}</span>
+                </dd>
+                <dt><span>Active</span></dt>
+                <dd>
+                    <span>{{partner.active}}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{partner.type}}</span>
+                </dd>
+                <dt><span>Industry</span></dt>
+                <dd>
+                    <div *ngIf="partner.industry">
+                        <a [routerLink]="['/industry', partner.industry?.id, 'view']">{{partner.industry?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/partner', partner.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+version: '2'
+services:
+    fpr360-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/fpr360/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=fpr360
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

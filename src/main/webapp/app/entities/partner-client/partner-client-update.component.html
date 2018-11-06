@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-partner-client-heading">Create or edit a Partner Client</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!partnerClient.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="partnerClient.id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_partner">Partner</label>
+                    <select class="form-control" id="field_partner" name="partner" [(ngModel)]="partnerClient.partner"  required>
+                        <option *ngIf="!editForm.value.partner" [ngValue]="null" selected></option>
+                        <option [ngValue]="partnerOption.id === partnerClient.partner?.id ? partnerClient.partner : partnerOption" *ngFor="let partnerOption of partners; trackBy: trackPartnerById">{{partnerOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.partner?.dirty && editForm.controls.partner?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.partner?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_merchantAccount">Merchant Account</label>
+                    <select class="form-control" id="field_merchantAccount" name="merchantAccount" [(ngModel)]="partnerClient.merchantAccount"  required>
+                        <option *ngIf="!editForm.value.merchantAccount" [ngValue]="null" selected></option>
+                        <option [ngValue]="merchantAccountOption.id === partnerClient.merchantAccount?.id ? partnerClient.merchantAccount : merchantAccountOption" *ngFor="let merchantAccountOption of merchantaccounts; trackBy: trackMerchantAccountById">{{merchantAccountOption.mid}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.merchantAccount?.dirty && editForm.controls.merchantAccount?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.merchantAccount?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

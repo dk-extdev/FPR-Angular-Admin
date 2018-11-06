@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181002142330_added_entity_ContactInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_ServiceProvider.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003204317_added_entity_Industry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_Merchant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_Partner.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181008175839_added_entity_GuruClient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181008204319_added_entity_ClientUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181008210840_added_entity_PartnerUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181009141553_added_entity_MerchantAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181009171514_added_entity_CrmVendor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181009174826_added_entity_ClientCrm.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181009201840_added_entity_PartnerClient.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20181002142330_added_entity_constraints_ContactInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_constraints_ServiceProvider.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_constraints_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_constraints_Merchant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181003203957_added_entity_constraints_Partner.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181008175839_added_entity_constraints_GuruClient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181008204319_added_entity_constraints_ClientUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181008210840_added_entity_constraints_PartnerUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181009141553_added_entity_constraints_MerchantAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181009174826_added_entity_constraints_ClientCrm.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181009201840_added_entity_constraints_PartnerClient.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

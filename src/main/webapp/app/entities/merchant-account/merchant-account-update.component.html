@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-merchant-account-heading">Create or edit a Merchant Account</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!merchantAccount.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="merchantAccount.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mid">Mid</label>
+                    <input type="text" class="form-control" name="mid" id="field_mid"
+                        [(ngModel)]="merchantAccount.mid" required minlength="8" maxlength="50"/>
+                    <div [hidden]="!(editForm.controls.mid?.dirty && editForm.controls.mid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mid?.errors?.minlength">
+                        This field is required to be at least 8 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mid?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_midDescriptor">Mid Descriptor</label>
+                    <input type="text" class="form-control" name="midDescriptor" id="field_midDescriptor"
+                        [(ngModel)]="merchantAccount.midDescriptor" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_active">Active</label>
+                    <input type="checkbox" class="form-control" name="active" id="field_active"
+                        [(ngModel)]="merchantAccount.active" />
+                    <div [hidden]="!(editForm.controls.active?.dirty && editForm.controls.active?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.active?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_merchant">Merchant</label>
+                    <select class="form-control" id="field_merchant" name="merchant" [(ngModel)]="merchantAccount.merchant"  required>
+                        <option *ngIf="!editForm.value.merchant" [ngValue]="null" selected></option>
+                        <option [ngValue]="merchantOption.id === merchantAccount.merchant?.id ? merchantAccount.merchant : merchantOption" *ngFor="let merchantOption of merchants; trackBy: trackMerchantById">{{merchantOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.merchant?.dirty && editForm.controls.merchant?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.merchant?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_clientCrm">Client Crm</label>
+                    <select class="form-control" id="field_clientCrm" name="clientCrm" [(ngModel)]="merchantAccount.clientCrm" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clientCrmOption.id === merchantAccount.clientCrm?.id ? merchantAccount.clientCrm : clientCrmOption" *ngFor="let clientCrmOption of clientcrms; trackBy: trackClientCrmById">{{clientCrmOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

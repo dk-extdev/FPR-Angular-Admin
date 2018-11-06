@@ -1,0 +1,131 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-client-crm-heading">Create or edit a Client Crm</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!clientCrm.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="clientCrm.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endpoint">Endpoint</label>
+                    <input type="text" class="form-control" name="endpoint" id="field_endpoint"
+                        [(ngModel)]="clientCrm.endpoint" required minlength="5" maxlength="150"/>
+                    <div [hidden]="!(editForm.controls.endpoint?.dirty && editForm.controls.endpoint?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.endpoint?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.endpoint?.errors?.minlength">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.endpoint?.errors?.maxlength">
+                        This field cannot be longer than 150 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_webUsername">Web Username</label>
+                    <input type="text" class="form-control" name="webUsername" id="field_webUsername"
+                        [(ngModel)]="clientCrm.webUsername" required minlength="3" maxlength="50"/>
+                    <div [hidden]="!(editForm.controls.webUsername?.dirty && editForm.controls.webUsername?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.webUsername?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.webUsername?.errors?.minlength">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.webUsername?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_webPassword">Web Password</label>
+                    <input type="text" class="form-control" name="webPassword" id="field_webPassword"
+                        [(ngModel)]="clientCrm.webPassword" required minlength="4" maxlength="50"/>
+                    <div [hidden]="!(editForm.controls.webPassword?.dirty && editForm.controls.webPassword?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.webPassword?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.webPassword?.errors?.minlength">
+                        This field is required to be at least 4 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.webPassword?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_apiKey">Api Key</label>
+                    <input type="text" class="form-control" name="apiKey" id="field_apiKey"
+                        [(ngModel)]="clientCrm.apiKey" required minlength="3" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.apiKey?.dirty && editForm.controls.apiKey?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.apiKey?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.apiKey?.errors?.minlength">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.apiKey?.errors?.maxlength">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_apiSecret">Api Secret</label>
+                    <input type="text" class="form-control" name="apiSecret" id="field_apiSecret"
+                        [(ngModel)]="clientCrm.apiSecret" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" [(ngModel)]="clientCrm.client"  required>
+                        <option *ngIf="!editForm.value.client" [ngValue]="null" selected></option>
+                        <option [ngValue]="clientOption.id === clientCrm.client?.id ? clientCrm.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.client?.dirty && editForm.controls.client?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.client?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vendor">Vendor</label>
+                    <select class="form-control" id="field_vendor" name="vendor" [(ngModel)]="clientCrm.vendor"  required>
+                        <option *ngIf="!editForm.value.vendor" [ngValue]="null" selected></option>
+                        <option [ngValue]="crmVendorOption.id === clientCrm.vendor?.id ? clientCrm.vendor : crmVendorOption" *ngFor="let crmVendorOption of crmvendors; trackBy: trackCrmVendorById">{{crmVendorOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.vendor?.dirty && editForm.controls.vendor?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.vendor?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
